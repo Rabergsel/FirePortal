@@ -16,6 +16,8 @@ public class Server
     public bool IsArchived { get; set; } = false;
     public ServerBackup? Archive { get; set; } = null;
 
+    public string Purpose { get; set; } = "Another new server";
+
     public List<ServerVariable> Variables { get; set; } = new();
     public List<ServerBackup> Backups { get; set; } = new();
     public List<NodeAllocation> Allocations { get; set; } = new();
