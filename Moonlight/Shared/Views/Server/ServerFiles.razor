@@ -1,0 +1,28 @@
+﻿@using FirePortal.Shared.Components.FileManagerPartials
+@using FirePortal.App.Database.Entities
+@using FirePortal.App.Helpers
+@using FirePortal.App.Helpers.Files
+@using FirePortal.App.Services
+@using FirePortal.App.ApiClients.Wings
+@using FirePortal.App.Helpers.Wings
+@using FirePortal.App.Services.Sessions
+
+@inject WingsApiHelper WingsApiHelper
+@inject WingsJwtHelper WingsJwtHelper
+@inject ConfigService ConfigService
+@inject IdentityService IdentityService
+
+<FileManager Access="FileAccess"></FileManager>
+
+@code
+{
+    [CascadingParameter]
+    public Server CurrentServer { get; set; }
+    
+    private FileAccess FileAccess;
+
+    protected override void OnInitialized()
+    {
+        FileAccess = new WingsFileAccess(WingsApiHelper, WingsJwtHelper, CurrentServer, ConfigService, IdentityService.User);
+    }
+}

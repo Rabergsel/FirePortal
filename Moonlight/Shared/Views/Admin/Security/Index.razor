@@ -1,0 +1,7 @@
+﻿@page "/admin/security"
+
+@using FirePortal.Shared.Components.Navigations
+
+@attribute [PermissionRequired(nameof(Permissions.AdminSecurity))]
+
+<AdminSecurityNavigation Index="0" />
